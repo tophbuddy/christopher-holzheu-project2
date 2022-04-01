@@ -1,0 +1,14 @@
+.BoardContainer {
+    display: grid;
+    margin: 20px auto;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    grid-auto-flow: column;
+    width: 200px;
+    height: 200px;
+}
+
+h1 {
+    margin: 0 auto;
+}
