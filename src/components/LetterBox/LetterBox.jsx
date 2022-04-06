@@ -1,13 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import './LetterBox.css';
 
-export default function LetterBox(props) {
-
-
+export default function LetterBox({letter, boxColor}) {
 
 return (
-    <div className="LetterBox">
-        <input type='text' value={'test'}/>
+    <div className="letterBox">
+        <input type='text' maxLength="1" className="inputWidthMax"/>
     </div>
 )
 

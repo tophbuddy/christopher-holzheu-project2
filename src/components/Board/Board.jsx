@@ -1,5 +1,6 @@
 import LetterBox from "../LetterBox/LetterBox.jsx"
 import './Board.css';
+import React from 'react';
 
 export default function Board() {
 

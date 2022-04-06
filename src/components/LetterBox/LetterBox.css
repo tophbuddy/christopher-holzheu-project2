@@ -1,4 +1,4 @@
-.LetterBox {
+.letterBox {
     width: 100px;
     height: 100px;
     justify-content: center;
@@ -11,11 +11,15 @@
 input[type="text"] {
     border:0;
     outline:0;
-    margin: auto;
+    /* margin: auto; */
     text-align: center;
     box-shadow: none;
     background: transparent;
-    font-size: 50px;
+    font-size: 75px;
+}
+
+.inputWidthMax {
+    width: 100px;
 }
 
 input:focus {
