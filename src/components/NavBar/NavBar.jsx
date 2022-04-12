@@ -14,6 +14,15 @@ export default function NavBar() {
                 <Button to={"/game"} component={Link}>
                     Game
                 </Button>
+                <Button to={"/game-easy"} component={Link}>
+                    Easy
+                </Button>
+                <Button to={"/game-medium"} component={Link}>
+                    Medium
+                </Button>
+                <Button to={"/game-hard"} component={Link}>
+                    Hard
+                </Button>
                 <Button to={"/rules"} component={Link}>
                     Rules
                 </Button>

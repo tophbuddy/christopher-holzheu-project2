@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Home from './components/Home/Home';
 import Rules from './components/Rules/Rules';
+import Wordle from './components/Game/Wordle'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import NavBar from './components/NavBar/NavBar';
@@ -12,8 +13,13 @@ ReactDOM.render(
   <BrowserRouter>
     <NavBar />
     <Routes>
-      
       <Route path={"/game"} element={<App />}/>
+      <Route path={"/game-easy"} element={<Wordle chosenDifficulty={"boardEasy"} 
+        difficultyNumGuesses={7} difficultyWordLength={5}/>}/>
+      <Route path={"/game-medium"} element={<Wordle chosenDifficulty={"boardMedium"} 
+        difficultyNumGuesses={6} difficultyWordLength={6}/>}/>
+      <Route path={"/game-hard"} element={<Wordle chosenDifficulty={"hardBoard"} 
+        difficultyNumGuesses={5} difficultyWordLength={7}/>}/>
       <Route path={"/home"} element={<Home />}/>
       <Route path={"/rules"} element={<Rules />}/>
     </Routes>

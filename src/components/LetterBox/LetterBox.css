@@ -1,6 +1,7 @@
 .letterBox {
     width: 100px;
     height: 100px;
+    margin: 20px;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -11,7 +12,6 @@
 input[type="text"] {
     border:0;
     outline:0;
-    /* margin: auto; */
     text-align: center;
     box-shadow: none;
     background: transparent;
