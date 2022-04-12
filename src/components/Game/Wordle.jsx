@@ -96,7 +96,7 @@ export default function Game({chosenDifficulty,
     
     const randomNumber = Math.floor(Math.random() * wordSetDifficult.length)
     const getWords = () => {
-
+        
     }
 
     return (

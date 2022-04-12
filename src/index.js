@@ -13,7 +13,6 @@ ReactDOM.render(
   <BrowserRouter>
     <NavBar />
     <Routes>
-      <Route path={"/game"} element={<App />}/>
       <Route path={"/game-easy"} element={<Wordle chosenDifficulty={"boardEasy"} 
         difficultyNumGuesses={7} difficultyWordLength={5}/>}/>
       <Route path={"/game-medium"} element={<Wordle chosenDifficulty={"boardMedium"} 

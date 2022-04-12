@@ -1,4 +1,4 @@
-import LetterBox from "../LetterBox/LetterBox.jsx"
+import LetterBox from "../LetterTile/LetterTile.jsx"
 import React from 'react';
 
 export default function BoardRow() {

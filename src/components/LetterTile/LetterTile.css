@@ -1,7 +1,7 @@
-.letterBox {
+.letterTile {
     width: 100px;
     height: 100px;
-    margin: 20px;
+    margin: 10px;
     justify-content: center;
     align-items: center;
     display: flex;

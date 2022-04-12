@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import { useContext } from "react";
-import './LetterBox.css';
+import './LetterTile.css';
 import { CurGameState } from '../Game/Wordle.jsx'
 import Board from "../Board/Board";
 
-export default function LetterBox({rI, cI}) {
+export default function LetterTile({rI, cI}) {
 
     // rI = row index
     // cI = column index
@@ -33,12 +33,16 @@ export default function LetterBox({rI, cI}) {
         return invalidLetter
     }
 
+
+
     return (
         <div>
-            <div className="letterBox" id={letterQ}>
-                <input type='text' maxLength="1" className="inputWidthMax">
-                    {/* {currentLetter} */}
-                </input>
+            <div className="letterTile" id={letterQ}>
+                <input type='text' 
+                    maxLength="1" 
+                    className="inputWidthMax" 
+                    
+                />
             </div>
         </div>
     );
