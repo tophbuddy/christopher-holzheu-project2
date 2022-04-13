@@ -13,13 +13,13 @@ ReactDOM.render(
   <BrowserRouter>
     <NavBar />
     <Routes>
+      <Route path={"/home"} element={<Home />}/>
       <Route path={"/game-easy"} element={<Wordle chosenDifficulty={"boardEasy"} 
         difficultyNumGuesses={7} difficultyWordLength={5}/>}/>
       <Route path={"/game-medium"} element={<Wordle chosenDifficulty={"boardMedium"} 
         difficultyNumGuesses={6} difficultyWordLength={6}/>}/>
-      <Route path={"/game-hard"} element={<Wordle chosenDifficulty={"hardBoard"} 
+      <Route path={"/game-hard"} element={<Wordle chosenDifficulty={"boardHard"} 
         difficultyNumGuesses={5} difficultyWordLength={7}/>}/>
-      <Route path={"/home"} element={<Home />}/>
       <Route path={"/rules"} element={<Rules />}/>
     </Routes>
   </BrowserRouter>

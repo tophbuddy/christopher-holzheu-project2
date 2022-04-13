@@ -3,3 +3,9 @@
     margin: 2px;
     flex-direction: column;
 }
+
+.gameEndTitle {
+    vertical-align:middle;
+    text-align: center;
+    margin-top: 20px;
+}

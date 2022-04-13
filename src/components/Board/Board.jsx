@@ -14,6 +14,9 @@ export default function Board({difficultyNumGuesses, difficultyWordLength}) {
         }
         boardLetterTiles.push(<div className="boardRowContainer">{curRow}</div>);
     }
+
+    const boardDifficultyTitle = difficultyNumGuesses === 5 ? "Hard" : difficultyNumGuesses
+        === 6 ? "Medium" : "Easy";
     
 
     return (
@@ -25,7 +28,7 @@ export default function Board({difficultyNumGuesses, difficultyWordLength}) {
         //     <BoardRow />
         // </div>
         <div>
-            
+            <h1 className="boardTitle">Wordle: {boardDifficultyTitle} Difficulty</h1>
             {boardLetterTiles}
         </div>
     )
