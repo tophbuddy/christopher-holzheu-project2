@@ -45,11 +45,11 @@ export default function Game({chosenDifficulty,
         let mediumLength = 6;
         let hardLength = 7;
         if (chosenDifficulty === "boardHard") {
-            return easyLength;
+            return hardLength;
         } else if (chosenDifficulty === "boardMedium") {
             return mediumLength;
         } else {
-            return hardLength;
+            return easyLength;
         } 
     }
     const wordLengthDifficulty = setWordLength();
@@ -74,61 +74,52 @@ export default function Game({chosenDifficulty,
     }, []);
     console.log("state " + chosenWord)
 
-    // const handleUserKeyLetter = (key) => {
-    //     console.log("user pressed: " + key)
-    // }
-
-    const handleUserKeyLetter = useCallback((key) => {
+    // const handleUserKeyLetter = useCallback((key) => {
+    function handleUserKeyLetter(key){
+        if (key.key !== 'Enter' && !key.key && key.key.length !== 1) return;
+        if (key.key === 'Enter') {
+            console.log(key.key)
+            handleUserEntry()
+            return;
+        }
         if (currentGuess.currentGameColumn > wordLengthDifficulty) return;
+        console.log(key.key)
         const newBoard = [...gameBoard];
-        newBoard[currentGuess.currentGameRow][currentGuess.currentGameColumn] = key;
+        newBoard[currentGuess.currentGameRow][currentGuess.currentGameColumn].letter = key.key.toUpperCase();
         setBoardState(newBoard);
         setCurrentGuess({
             currentGameRow: currentGuess.currentGameRow,
             currentGameColumn: currentGuess.currentGameColumn + 1,
-        }); 
-    }, [currentGuess]);
+        })
+    }; 
+    // }, [currentGuess]);
 
-    const handleUserEntry = () => {
+    function handleUserEntry() {
         console.log("enter function called")
-        if (currentGuess !== wordLengthDifficulty) {
+        // debugger
+        if (currentGuess.currentGameColumn !== wordLengthDifficulty) {
             console.log("Nothing in here")
             return};
         let gameWord = "";
         for (let c = 0; c < difficultyWordLength; c++) {
-            gameWord += gameBoard[currentGuess.currentGameRow][c];
+            gameWord += gameBoard[currentGuess.currentGameRow][c].letter;
         }
         if (gameWordList.includes(chosenWord.toUpperCase())) {
-            setCurrentGuess({currentGameRow: currentGuess.currentGameRow++, currentGameColumn: 0})
+            setCurrentGuess({currentGameRow: currentGuess.currentGameRow + 1, currentGameColumn: 0})
         } else {
             console.log("Invalid word")
         }
-
+        console.log("chosen: " +chosenWord)
         if (gameWord.toUpperCase() === chosenWord) {
             setGameState({ isGameFinished: true, isWordCorrect: true });
             return;
           }
           console.log(currentGuess);
-          if (currentGuess.currentGameRow === wordLengthDifficulty) {
+          if (currentGuess.currentGameRow === boardDifficulty.length) {
             setGameState({ isGameFinished: true, isWordCorrect: false });
             return;
           } 
     };
-
-    useEffect(() => {
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                console.log("Pressed!")
-                handleUserEntry();
-                console.log(gameBoard[0][0].letter)
-                event.preventDefault();
-            }
-        })
-        // return () => {
-        //     document.removeEventListener("keydown", handleUserEntry());
-        //   };
-    }, []);
-
 
     return (
 

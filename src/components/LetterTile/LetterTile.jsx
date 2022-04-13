@@ -13,11 +13,11 @@ export default function LetterTile({rI, cI}) {
     
     const {currentGuess, usedLetters, chosenWord,
         gameBoard, setGameBoard, handleUserKeyLetter } = useContext(CurGameState);
-    const currentLetter = gameBoard[rI][cI];
+    const currentLetter = gameBoard[rI][cI].letter;
     const answerLetterPosition = chosenWord[cI] === currentLetter;
-    
     const wrongLetterPosition = !answerLetterPosition && currentLetter !== "" 
         && chosenWord.includes(currentLetter);
+    const [letterTileColor, setLetterTileColor] = useState('white')
 
     function checkLetter() {
         let correctPosition = "correct position"
@@ -40,8 +40,9 @@ export default function LetterTile({rI, cI}) {
                 <input type='text' 
                     maxLength="1" 
                     className="inputWidthMax"
-                    name="userInput"
-                    onChange={handleUserKeyLetter}
+                    // name="userInput"
+                    value={currentLetter}
+                    onKeyDown={handleUserKeyLetter}
                 />
             </div>
         </div>
