@@ -9,7 +9,7 @@ export default function LetterTile({rI, cI}) {
     // rI = row index
     // cI = column index
     
-    const {currentGuess, usedLetters, chosenWord,
+    const {currentGuess, usedLetters, setUsedLetterState, chosenWord,
         gameBoard, handleUserKeyLetter } = useContext(CurGameState);
     const currentLetter = gameBoard[rI][cI].letter;
     const answerLetterPosition = chosenWord[cI] === currentLetter;
@@ -24,21 +24,24 @@ export default function LetterTile({rI, cI}) {
     function checkLetter() {
         if (currentGuess.currentGameRow > rI) {
             if (answerLetterPosition) {
-                console.log("ansewer letter position ")
                 return correctPosition;
             } else if (wrongLetterPosition) {
                 return wrongPosition;
+            } else {
+                return invalidLetter;
             }
         }
-        return invalidLetter
+        return;
     };
     const tileLetter = checkLetter();
 
     function changeColor() {
         if (tileLetter === correctPosition) {
             setLetterTileColor('green')
-        } else if (tileLetter === wrongPosition){
+        } else if (tileLetter === wrongPosition) {
             setLetterTileColor('yellow')
+        } else if (tileLetter === invalidLetter) {
+            setLetterTileColor('grey')
         }
     }
     useEffect(() => {

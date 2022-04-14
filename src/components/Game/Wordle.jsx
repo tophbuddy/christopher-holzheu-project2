@@ -75,6 +75,10 @@ export default function Game({chosenDifficulty,
     console.log("state " + chosenWord)
 
     function handleUserKeyLetter(key){
+        if (key.key === 'Backspace') {
+            handleDelete();
+            return;
+        }
         if (key.key !== 'Enter' && !key.key && key.key.length !== 1) return;
         if (key.key === 'Enter') {
             console.log(key.key)
@@ -93,11 +97,7 @@ export default function Game({chosenDifficulty,
     }; 
 
     function handleUserEntry() {
-        console.log("enter function called")
-        // debugger
-        if (currentGuess.currentGameColumn !== wordLengthDifficulty) {
-            console.log("Nothing in here")
-            return};
+        if (currentGuess.currentGameColumn !== wordLengthDifficulty) {return};
         let gameWord = "";
         for (let c = 0; c < difficultyWordLength; c++) {
             gameWord += gameBoard[currentGuess.currentGameRow][c].letter;
@@ -107,7 +107,6 @@ export default function Game({chosenDifficulty,
         } else {
             console.log("Invalid word")
         }
-        console.log("chosen: " +chosenWord)
         if (gameWord.toUpperCase() === chosenWord) {
             setGameState({ isGameFinished: true, isWordCorrect: true });
             return;
@@ -119,13 +118,21 @@ export default function Game({chosenDifficulty,
           } 
     };
 
+    function handleDelete() {
+        if (currentGuess.currentGameColumn === 0) return;
+        const tempBoard = [...gameBoard];
+        tempBoard[currentGuess.currentGameRow][currentGuess.currentGameColumn - 1].letter = "";
+        setBoardState(tempBoard);
+        setCurrentGuess({ ...currentGuess, currentGameColumn: currentGuess.currentGameColumn - 1 });
+    };
+
     return (
 
         <CurGameState.Provider
         value ={{
             currentGuess, setCurrentGuess, chosenWord, setWordState, 
             isGameFinished, setGameState, usedLetters, setUsedLetterState, 
-            gameWordList, setWordList, handleUserEntry, gameBoard, setBoardState,
+            gameWordList, setWordList, handleUserEntry, handleDelete, gameBoard, setBoardState,
             handleUserKeyLetter
         }}>
             <div className="boardContainer">
