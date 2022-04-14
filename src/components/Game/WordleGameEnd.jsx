@@ -3,7 +3,7 @@ import { CurGameState } from '../Game/Wordle.jsx'
 
 export default function WordleGameEnd() {
     const {
-        currentGuess, isGameFinished, gameBoard, chosenWord, setBoardState
+        currentGuess, isGameFinished, chosenWord
     } = useContext(CurGameState);
 
     function checkGameResult() {

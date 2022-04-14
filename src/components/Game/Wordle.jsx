@@ -5,7 +5,7 @@ import { createContext } from "react";
 import { useState } from "react";
 import { easyWordSet, mediumWordSet, hardWordSet } from "../../wordSets/wordSets.js";
 import { easyBoard, mediumBoard, hardBoard } from "../Board/BoardData.jsx";
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import WordleGameEnd from "./WordleGameEnd.jsx"
 
 // Using context and provider from here: https://reactjs.org/docs/context.html
@@ -74,7 +74,6 @@ export default function Game({chosenDifficulty,
     }, []);
     console.log("state " + chosenWord)
 
-    // const handleUserKeyLetter = useCallback((key) => {
     function handleUserKeyLetter(key){
         if (key.key !== 'Enter' && !key.key && key.key.length !== 1) return;
         if (key.key === 'Enter') {
@@ -92,7 +91,6 @@ export default function Game({chosenDifficulty,
             currentGameColumn: currentGuess.currentGameColumn + 1,
         })
     }; 
-    // }, [currentGuess]);
 
     function handleUserEntry() {
         console.log("enter function called")

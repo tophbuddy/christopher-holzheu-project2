@@ -20,13 +20,6 @@ export default function Board({difficultyNumGuesses, difficultyWordLength}) {
     
 
     return (
-        // <div>
-        //     <BoardRow />
-        //     <BoardRow />
-        //     <BoardRow />
-        //     <BoardRow />
-        //     <BoardRow />
-        // </div>
         <div>
             <h1 className="boardTitle">Wordle: {boardDifficultyTitle} Difficulty</h1>
             {boardLetterTiles}
